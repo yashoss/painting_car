@@ -27,6 +27,13 @@ Think about the type of sensors and processing you would want onboard, as well a
 2. Any wet paint the car drives over should be repainted.
 3. The amount of paint used should be minimized.
 
+## Setup:
+
+The care will have 5 sensors:
+* 1 sensor on the front to detect how far from the edge of the wall the car is.
+* 2 sensors on either side of the car to measure it's distance from the bottom edge.
+* 2 sensors on either side of the car to detect whether paint along it's edge is dry.
+
 ## Approach:
 
 ### From the perspective of facing the wall.
@@ -44,6 +51,8 @@ Think about the type of sensors and processing you would want onboard, as well a
 
 * As every turn is made, proximity sensors on either side of the vehicle will alert the vehicle upon reaching a distance of less than 2 units from the bottom of the wall.
 
+..* It begins with the proximity sensor on the right of the car measuring the distance and the sensor on it's left to check for dryness of paint, upon turning the sensors switch and the left sensor measures distance and the right measures dryness.
+
 ..* If this is the case, the next turn made by the car should result in the car being (distance from wall - 1 unit) from the bottom. This is to ensure that the final path the car takes is the width of the car.
 
 * Once the car is against the bottom edge of the wall it should stop within one 1 of reaching either the left or right edge depending on which direction the car results in.
@@ -54,3 +63,4 @@ Think about the type of sensors and processing you would want onboard, as well a
 * The wall is now painted and the car can be retrieved.
 
 ## Demo:
+Here is a video demonstrating the cars travel path (apologies for the low quality): [Pathing demo](https://www.youtube.com/watch?v=VKIs81gYPeo)
