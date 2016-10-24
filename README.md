@@ -80,7 +80,7 @@ Here is a video demonstrating the cars travel path (apologies for the low qualit
 ### Additions:
 
 * We will add one more sensor to the back of the car that measures distance from the edge.
-* We will also have a sensor to measure the speed of the car.
+* We will also have a sensor to measure the speed of the car (an encoder).
 
 ### Driving and turning mechanism:
 
@@ -105,7 +105,7 @@ Here is a video demonstrating the cars travel path (apologies for the low qualit
   * If the total distance from the measurement of the front and back sensor + the length of the car equals the height of the wall then it will send a "STOP" signal bringing it to a complete stop
 
 5. As mentioned previously after every 90 degree turn the car would back up. So after the "STOP" signal is terminated, a "REVERSE" signal will be sent -- probably as a callback to the "STOP"
-  * The sensor at the back of the car will store it's distance from the wall, then the car drives back at a constant speed slowing as it's gets close to the wall Once the car stops it will drive forward again until the sensor at the back reads the same distance as it read before going backwards
+  * The sensor at the back of the car will store it's distance from the wall (BACKING_DISTANCE = back sensor reading), then the car drives back at a constant speed slowing as it's gets close to the wall Once the car stops it will drive forward again until the sensor at the back reads the same distance as it read before going backwards
 
 6. Once again the "TURN" signal is sent. This time the proximity sensors will measure and check against the width of the wall instead of the height
 
