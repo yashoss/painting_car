@@ -49,15 +49,15 @@ The car will have 5 sensors:
 
 5. As every turn is made, proximity sensors on either side of the vehicle will alert the vehicle upon reaching a distance of less than 2 units from the bottom of the wall.
 
-..* It begins with the proximity sensor on the right of the car measuring the distance and the sensor on it's left to check for dryness of paint, upon turning the sensors switch and the left sensor measures distance and the right measures dryness.
+  * It begins with the proximity sensor on the right of the car measuring the distance and the sensor on it's left to check for dryness of paint, upon turning the sensors switch and the left sensor measures distance and the right measures dryness.
 
-..* If this is the case, the next turn made by the car should result in the car being (distance from wall - 1 unit) from the bottom. This is to ensure that the final path the car takes is the width of the car.
+  * If this is the case, the next turn made by the car should result in the car being (distance from wall - 1 unit) from the bottom. This is to ensure that the final path the car takes is the width of the car.
 
 6. Once the car is against the bottom edge of the wall it should stop within one 1 of reaching either the left or right edge depending on which direction the car results in.
 
 7. At this point a sensor should alert the car whether the paint on the wall above the car is dry.
 
-..* Once that paint it dry the car can make it's final maneuver of turning, backing into the corner, then moving forward.
+  * Once that paint it dry the car can make it's final maneuver of turning, backing into the corner, then moving forward.
 
 8. The wall is now painted and the car can be retrieved.
 
