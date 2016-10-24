@@ -74,3 +74,53 @@ Here is a video demonstrating the cars travel path (apologies for the low qualit
 * Wheels that rotate allowing the car to strafe.
 
 * Paint shield to prevent unwanted paint on adjacent walls.
+
+## More details:
+
+### Additions:
+
+* We will add one more sensor to the back of the car that measures distance from the edge.
+* We will also have a sensor to measure the speed of the car.
+
+### Driving and turning mechanism:
+
+1. The car is initially facing horizontally, so to start off, the car will receive a signal to "START" (triggering some "start function in the software")
+  * The "START" signal will tell the car to begin accelerating up until a certain speed (let's say 1 unit per second)
+
+2. As the sensor on the front of the car measures its distance from the edge to be 2 units away, the processor will send a signal to "SLOW"(triggering some "slow" function in the software)
+  * This will cause the signal to come to a complete stop within 1 unit of the wall (with a breaking mechanism with either pads or counter rotations of the wheels)
+
+3. Once the speed of the car reaches 0, a "TURN" action will be triggered
+  * A boolean value will be stored globally to represent whether the vehicle is in it's turn sequence (TURN_SEQUENCE = TRUE). This is to allow the software to know whether it should measure against the width of the wall or the height of the wall (more explained below)
+  * This will result in a speed differential between the inside and outside wheels. The outside wheels will accelerate faster than the inside wheels up to a certain speed while the inner wheels should lag behind in order to make the car drive in a parabolic shape(see picture below)
+
+* Purple dot = front wheels
+* Car is facing to the right
+* P1, P2, P3 = stopping points in the turning
+* r1, r2 = turning radius of outside and inside wheels respectively
+* Each square represents 1 unit
+![setup sketch](images/turning.jpg)
+
+4. The car will then use both it's proximity sensors on it's front and back
+  * If the total distance from the measurement of the front and back sensor + the length of the car equals the height of the wall then it will send a "STOP" signal bringing it to a complete stop
+
+5. As mentioned previously after every 90 degree turn the car would back up. So after the "STOP" signal is terminated, a "REVERSE" signal will be sent -- probably as a callback to the "STOP"
+  * The sensor at the back of the car will store it's distance from the wall, then the car drives back at a constant speed slowing as it's gets close to the wall Once the car stops it will drive forward again until the sensor at the back reads the same distance as it read before going backwards
+
+6. Once again the "TURN" signal is sent. This time the proximity sensors will measure and check against the width of the wall instead of the height
+
+7. The same process is repeated of "STOP" -> "REVERSE"
+  * At the end of this reverse method we set TURN_SEQUENCE = FALSE
+
+8. At this point the car should be back at P3 in the picture above with it's left sensor checking if it is against the bottom of the wall or not.
+  * If not, then the software commences with the same sequence as above starting with step one except now the software should store a variable to know whether the car is facing left or right. This will determine which sensors data will be used, but the car will always drive forward since it will be facing the direction it is going
+
+  * If yes, then the software will commence with it's final cycle, setting some variable FINAL_CYCLE = TRUE (below):
+
+#### Final Cycle:
+
+9. The car will continue forward with it's usual "START" until it reaches the within one unit of the edge it is facing
+
+10. Once at this point the car will remain idle waiting for it's inside paint sensor to detect the paint has dried
+
+11. Once no more wet paint is detected the car will commence with it's final "TURN" sequence which will only proceed with the first 90 degree turn followed by a "REVERSE"
