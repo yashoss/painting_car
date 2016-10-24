@@ -29,7 +29,7 @@ Think about the type of sensors and processing you would want onboard, as well a
 
 ## Setup:
 
-The care will have 5 sensors:
+The car will have 5 sensors:
 * 1 sensor on the front to detect how far from the edge of the wall the car is.
 * 2 sensors on either side of the car to measure it's distance from the bottom edge.
 * 2 sensors on either side of the car to detect whether paint along it's edge is dry.
@@ -39,28 +39,35 @@ The care will have 5 sensors:
 ### From the perspective of facing the wall.
 ### 1 unit = width and height of car + paint roller
 
-* We initially place the car starting at the top left-hand corner of the wall, 1 unit right of the edge facing the right.
+1. We initially place the car starting at the top left-hand corner of the wall facing the right.
 
-* The car begins by backing up and painting the very top left-hand corner of the wall.
+2. The car begins by driving right and turns downward upon getting near the right edge(using a proximity sensor).
 
-* The car continues by driving right and turns downward upon getting near the right edge(using a proximity sensor).
+3. Every time the car makes a 90 degree turn, it should back up(1 unit) in order to completely paint the unit of wall it used to make the turn.
 
-* Every time the car makes a 90 degree turn, it should back up(1 unit) in order to completely paint the unit of wall it used to make the turn.
+4. The car then continues another 90 degrees until it is facing the left edge -- once again backs up to completely fill the unit of wall that was used for the turn.
 
-* The car then continues another 90 degrees until it is facing the left edge -- once again backs up to completely fill the unit of wall that was used for the turn.
-
-* As every turn is made, proximity sensors on either side of the vehicle will alert the vehicle upon reaching a distance of less than 2 units from the bottom of the wall.
+5. As every turn is made, proximity sensors on either side of the vehicle will alert the vehicle upon reaching a distance of less than 2 units from the bottom of the wall.
 
 ..* It begins with the proximity sensor on the right of the car measuring the distance and the sensor on it's left to check for dryness of paint, upon turning the sensors switch and the left sensor measures distance and the right measures dryness.
 
 ..* If this is the case, the next turn made by the car should result in the car being (distance from wall - 1 unit) from the bottom. This is to ensure that the final path the car takes is the width of the car.
 
-* Once the car is against the bottom edge of the wall it should stop within one 1 of reaching either the left or right edge depending on which direction the car results in.
+6. Once the car is against the bottom edge of the wall it should stop within one 1 of reaching either the left or right edge depending on which direction the car results in.
 
-* At this point a sensor should alert the car whether the paint on the wall above the car is dry.
+7. At this point a sensor should alert the car whether the paint on the wall above the car is dry.
+
 ..* Once that paint it dry the car can make it's final maneuver of turning, backing into the corner, then moving forward.
 
-* The wall is now painted and the car can be retrieved.
+8. The wall is now painted and the car can be retrieved.
 
 ## Demo:
 Here is a video demonstrating the cars travel path (apologies for the low quality): [Pathing demo](https://www.youtube.com/watch?v=VKIs81gYPeo)
+
+## Possible improvements:
+
+* Make the wheels of the car paint rollers.
+
+* Wheels that rotate allowing the car to strafe.
+
+* Paint shield to prevent unwanted paint on adjacent walls.
