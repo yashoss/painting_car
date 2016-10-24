@@ -34,6 +34,8 @@ The car will have 5 sensors:
 * 2 sensors on either side of the car to measure it's distance from the bottom edge.
 * 2 sensors on either side of the car to detect whether paint along it's edge is dry.
 
+![setup sketch](images/setup.jpg)
+
 ## Approach:
 
 ### From the perspective of facing the wall.
