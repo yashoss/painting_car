@@ -11,7 +11,7 @@ You can pick where you initially place the car - There is enough paint in the re
 
 ### Deliverable:
 
-Think about the type of sensors and processing you would want onboard, as well as an overall idea of your algorithms architecture. No need for actual code at this time. We’re just trying to kick-start a conversation.
+Think about the type of sensors and processing you would want onboard, as well as an overall idea of your algorithms architecture.
 
 ## Assumptions:
 
@@ -32,6 +32,7 @@ Think about the type of sensors and processing you would want onboard, as well a
 The car will have 5 sensors:
 * 1 sensor on the front to detect how far from the edge of the wall the car is.
 * 2 sensors on either side of the car to measure it's distance from the bottom edge.
+  * Returning floating point number representing distance.
 * 2 sensors on either side of the car to detect whether paint along it's edge is dry.
 
 ![setup sketch](images/setup.jpg)
