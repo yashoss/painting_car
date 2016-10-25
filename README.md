@@ -97,7 +97,7 @@ Here is a video demonstrating the cars travel path (apologies for the low qualit
 * Purple dot = front wheels
 * Car is facing to the right
 * P1, P2, P3 = stopping points in the turning
-* r1, r2 = turning radius of outside and inside wheels respectively
+* r1, r2 = turning radius of inside and outside wheels respectively
 * Each square represents 1 unit
 ![setup sketch](images/turning.jpg)
 
