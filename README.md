@@ -119,8 +119,12 @@ Here is a video demonstrating the cars travel path (apologies for the low qualit
 
 #### Final Cycle:
 
-9. The car will continue forward with it's usual "START" until it reaches the within one unit of the edge it is facing
+9. The car will continue forward with it's usual "START" until it reaches within one unit of the edge it is facing
 
 10. Once at this point the car will remain idle waiting for it's inside paint sensor to detect the paint has dried
 
 11. Once no more wet paint is detected the car will commence with it's final "TURN" sequence which will only proceed with the first 90 degree turn followed by a "REVERSE"
+
+### More considerations:
+
+* The software to run will have to run asynchronously or in parallel with some other function in order to continually update the variables that are being read from the sensors. Javascript provides asynchronous function calls, but other programming languages such as C++ could be used to mimic this effect.
